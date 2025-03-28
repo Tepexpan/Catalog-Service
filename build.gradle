@@ -9,10 +9,10 @@ version = '0.0.1-SNAPSHOT'
 
 
 java {
-	sourceCompatibility = JavaVersion.VERSION_24  // Usa la versión correcta
-	targetCompatibility = JavaVersion.VERSION_24  // Usa la versión correcta
+	sourceCompatibility = JavaVersion.VERSION_21  // Usa la versión correcta
+	targetCompatibility = JavaVersion.VERSION_21  // Usa la versión correcta
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(24)
+		languageVersion = JavaLanguageVersion.of(21)
 	}
 }
 
