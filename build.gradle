@@ -9,25 +9,53 @@ version = '0.0.1-SNAPSHOT'
 
 
 java {
-	sourceCompatibility = JavaVersion.VERSION_21  // Usa la versión correcta
-	targetCompatibility = JavaVersion.VERSION_21  // Usa la versión correcta
+	sourceCompatibility = JavaVersion.VERSION_24  // Usa la versión correcta
+	targetCompatibility = JavaVersion.VERSION_24  // Usa la versión correcta
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
+		languageVersion = JavaLanguageVersion.of(24)
 	}
 }
 
 repositories {
 	mavenCentral()
 }
+ext {
+	set('springCloudVersion',"2024.0.1")
+	set('testcontainersVersion', "1.20.6")
+}
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	implementation 'org.springframework.retry:spring-retry'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.flywaydb:flyway-database-postgresql'
+	runtimeOnly 'org.postgresql:postgresql'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-webflux'
+	testImplementation 'org.testcontainers:postgresql'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+		mavenBom "org.testcontainers:testcontainers-bom:${testcontainersVersion}"
+	}
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+bootRun {
+	systemProperty 'spring.profiles.active', 'testdata'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
 }
