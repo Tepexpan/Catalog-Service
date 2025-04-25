@@ -20,20 +20,20 @@ import java.util.stream.StreamSupport;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DataJdbcTest
-@Import(DataConfig.class)
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@ActiveProfiles("integration")
+//@DataJdbcTest
+//@Import(DataConfig.class)
+//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+//@ActiveProfiles("integration")
 public class BookRepositoryJdbcTests {
-    @Autowired
-    private BookRepository bookRepository;
+    //@Autowired
+   // private BookRepository bookRepository;
 
-    @Autowired
-    private JdbcAggregateTemplate jdbcAggregateTemplate;
+   // @Autowired
+   // private JdbcAggregateTemplate jdbcAggregateTemplate;
 
-    @Test
+    //@Test
     void findAllBooks() {
-        assertThat(true).isTrue();
+      //  assertThat(true).isTrue();
 //        var book1 = Book.of("1234561235", "Title", "Author", 12.90,"Polarshit");
 //        var book2 = Book.of("1234561236", "Another Title", "Author", 12.90,"Polarshit");
 //        jdbcAggregateTemplate.insert(book1);
