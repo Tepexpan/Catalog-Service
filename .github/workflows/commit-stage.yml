@@ -76,7 +76,7 @@ jobs:
         if: success() || failure()
         with:
           sarif_file: ${{ steps.scan.outputs.sarif }}
-      - name: Log into container registry
+      - name: Log into container registry a
         uses: docker/login-action@v3
         with:
           registry: ${{env.REGISTRY}}
