@@ -1,6 +1,12 @@
 name: Commit Stage
 on: push
 
+permissions:
+  contents: read
+  packages: write
+  security-events: write
+  id-token: write
+
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: tepexpan/catalog-service
